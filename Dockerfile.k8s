@@ -2,5 +2,5 @@ FROM quay.io/roboll/helmfile:v0.68.1
 
 RUN helm plugin install https://github.com/rimusz/helm-tiller
 RUN apk add --no-cache python3 gnupg make
-ADD requirements.txt .
+ADD requirements.k8s.txt requirements.txt
 RUN pip3 install -r requirements.txt
