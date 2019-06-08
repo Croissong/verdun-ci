@@ -9,7 +9,7 @@ steps:
       from_secret: DOCKER_USER
     password:
       from_secret: DOCKER_PASSWORD_B64
-    repo: verdun-ci
+    repo: croissong/verdun-ci
     dockerfile: Dockerfile.k8s
     tags:
       - k8s
