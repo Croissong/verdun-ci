@@ -13,3 +13,15 @@ steps:
     dockerfile: Dockerfile.k8s
     tags:
       - k8s
+
+- name: build_frontend_image
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: DOCKER_USER
+    password:
+      from_secret: DOCKER_PASSWORD
+    repo: croissong/verdun-ci
+    dockerfile: Dockerfile.frontend
+    tags:
+      - frontend
