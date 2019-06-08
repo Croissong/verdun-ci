@@ -1,40 +1,15 @@
 kind: pipeline
 name: default
-globals:
-  - &docker_creds
+
+steps:
+- name: build_k8s_image
+  image: plugins/docker
+  settings:
     username:
       from_secret: DOCKER_USER
     password:
       from_secret: DOCKER_PASSWORD
-
-steps:
-
-steps:
-  - name: prepare
-    image: busybox
-    commands:
-      - mkdir -p /cache/${DRONE_REPO}/docker
-    volumes:
-      - name: cache
-        path: /cache
-
-  - name: build_k8s_image
-    image: plugins/docker
-    settings:
-      repo: croissong/verdun-ci
-      dockerfile: Dockerfile.k8s
-      tags:
-        - k8s
-      use_cache: true
-      <<: *docker_creds
-    volumes:
-      - name: docker
-        path: /var/lib/docker
-
-volumes:
-  - name: cache
-    host:
-      path: /var/cache
-  - name: docker
-    host:
-      path: /var/cache/${DRONE_REPO}/docker
+    repo: croissong/verdun-ci
+    dockerfile: Dockerfile.k8s
+    tags:
+      - k8s
