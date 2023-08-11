@@ -1,5 +1,5 @@
 ruamel.yaml==0.15.96
 click==7.0
-gitpython==2.1.11
+gitpython==3.1.32
 docker==4.0.1
 coloredlogs==10.0
